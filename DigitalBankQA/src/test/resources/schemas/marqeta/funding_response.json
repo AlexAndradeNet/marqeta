@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "token": {
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string"
+    },
+    "last_modified_time": {
+      "type": "string"
+    },
+    "account": {
+      "type": "string"
+    },
+    "basic_auth_username": {
+      "type": "string"
+    },
+    "basic_auth_password": {
+      "type": "string"
+    },
+    "timeout_millis": {
+      "type": "integer"
+    },
+    "custom_header": {
+      "type": "object"
+    },
+    "use_mtls": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "url",
+    "version",
+    "name",
+    "active",
+    "token",
+    "created_time",
+    "last_modified_time",
+    "account",
+    "basic_auth_username",
+    "basic_auth_password",
+    "timeout_millis",
+    "custom_header",
+    "use_mtls"
+  ]
+}

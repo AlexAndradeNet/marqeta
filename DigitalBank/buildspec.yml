@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date` by $CODEBUILD_INITIATOR
+      - echo Building the $SERVICE_NAME Docker image...
+      - echo CODEBUILD_SOURCE_VERSION is $CODEBUILD_SOURCE_VERSION
+      - echo CODEBUILD_WEBHOOK_TRIGGER is $CODEBUILD_WEBHOOK_TRIGGER
+      - IMAGE_REPO_NAME=${IMAGE_REPO_NAME:-$SERVICE_NAME}
+      - DIRECTORY=${DIRECTORY:-$(basename $SERVICE_NAME)}
+      - source ${DIRECTORY}/image_version
+      - echo Building $IMAGE_REPO_NAME:$IMAGE_TAG image....
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG ${DIRECTORY}
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the $SERVICE_NAME Docker image to $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG ....
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG

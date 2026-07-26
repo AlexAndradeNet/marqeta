@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "created_time": {
+      "type": "string"
+    },
+    "last_modified_time": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    },
+    "user_token": {
+      "type": "string"
+    },
+    "card_product_token": {
+      "type": "string"
+    },
+    "last_four": {
+      "type": "string"
+    },
+    "pan": {
+      "type": "string"
+    },
+    "expiration": {
+      "type": "string"
+    },
+    "expiration_time": {
+      "type": "string"
+    },
+    "barcode": {
+      "type": "string"
+    },
+    "pin_is_set": {
+      "type": "boolean"
+    },
+    "state": {
+      "type": "string"
+    },
+    "state_reason": {
+      "type": "string"
+    },
+    "fulfillment_status": {
+      "type": "string"
+    },
+    "instrument_type": {
+      "type": "string"
+    },
+    "expedite": {
+      "type": "boolean"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "key1": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key1"
+      ]
+    }
+  },
+  "required": [
+    "created_time",
+    "last_modified_time",
+    "token",
+    "user_token",
+    "card_product_token",
+    "last_four",
+    "pan",
+    "expiration",
+    "expiration_time",
+    "barcode",
+    "pin_is_set",
+    "state",
+    "state_reason",
+    "fulfillment_status",
+    "instrument_type",
+    "expedite",
+    "metadata"
+  ]
+}

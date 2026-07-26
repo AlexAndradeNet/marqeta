@@ -1,0 +1,696 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "string"
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "poi": {
+          "type": "object",
+          "properties": {
+            "other": {
+              "type": "object",
+              "properties": {
+                "allow": {
+                  "type": "boolean"
+                },
+                "card_presence_required": {
+                  "type": "boolean"
+                },
+                "cardholder_presence_required": {
+                  "type": "boolean"
+                },
+                "track1_discretionary_data": {
+                  "type": "string"
+                },
+                "track2_discretionary_data": {
+                  "type": "string"
+                },
+                "use_static_pin": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "allow",
+                "card_presence_required",
+                "cardholder_presence_required",
+                "track1_discretionary_data",
+                "track2_discretionary_data",
+                "use_static_pin"
+              ]
+            },
+            "ecommerce": {
+              "type": "boolean"
+            },
+            "atm": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "other",
+            "ecommerce",
+            "atm"
+          ]
+        },
+        "transaction_controls": {
+          "type": "object",
+          "properties": {
+            "accepted_countries_token": {
+              "type": "string"
+            },
+            "always_require_pin": {
+              "type": "boolean"
+            },
+            "always_require_icc": {
+              "type": "boolean"
+            },
+            "allow_gpa_auth": {
+              "type": "boolean"
+            },
+            "require_card_not_present_card_security_code": {
+              "type": "boolean"
+            },
+            "allow_mcc_group_authorization_controls": {
+              "type": "boolean"
+            },
+            "allow_first_pin_set_via_financial_transaction": {
+              "type": "boolean"
+            },
+            "ignore_card_suspended_state": {
+              "type": "boolean"
+            },
+            "allow_chip_fallback": {
+              "type": "boolean"
+            },
+            "allow_network_load": {
+              "type": "boolean"
+            },
+            "allow_network_load_card_activation": {
+              "type": "boolean"
+            },
+            "allow_quasi_cash": {
+              "type": "boolean"
+            },
+            "enable_partial_auth_approval": {
+              "type": "boolean"
+            },
+            "address_verification": {
+              "type": "object",
+              "properties": {
+                "av_messages": {
+                  "type": "object",
+                  "properties": {
+                    "validate": {
+                      "type": "boolean"
+                    },
+                    "decline_on_address_number_mismatch": {
+                      "type": "boolean"
+                    },
+                    "decline_on_postal_code_mismatch": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "validate",
+                    "decline_on_address_number_mismatch",
+                    "decline_on_postal_code_mismatch"
+                  ]
+                },
+                "auth_messages": {
+                  "type": "object",
+                  "properties": {
+                    "validate": {
+                      "type": "boolean"
+                    },
+                    "decline_on_address_number_mismatch": {
+                      "type": "boolean"
+                    },
+                    "decline_on_postal_code_mismatch": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "validate",
+                    "decline_on_address_number_mismatch",
+                    "decline_on_postal_code_mismatch"
+                  ]
+                }
+              },
+              "required": [
+                "av_messages",
+                "auth_messages"
+              ]
+            },
+            "notification_language": {
+              "type": "string"
+            },
+            "strong_customer_authentication_limits": {
+              "type": "object"
+            },
+            "quasi_cash_exempt_mids": {
+              "type": "string"
+            },
+            "enable_credit_service": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "accepted_countries_token",
+            "always_require_pin",
+            "always_require_icc",
+            "allow_gpa_auth",
+            "require_card_not_present_card_security_code",
+            "allow_mcc_group_authorization_controls",
+            "allow_first_pin_set_via_financial_transaction",
+            "ignore_card_suspended_state",
+            "allow_chip_fallback",
+            "allow_network_load",
+            "allow_network_load_card_activation",
+            "allow_quasi_cash",
+            "enable_partial_auth_approval",
+            "address_verification",
+            "notification_language",
+            "strong_customer_authentication_limits",
+            "quasi_cash_exempt_mids",
+            "enable_credit_service"
+          ]
+        },
+        "selective_auth": {
+          "type": "object",
+          "properties": {
+            "sa_mode": {
+              "type": "integer"
+            },
+            "enable_regex_search_chain": {
+              "type": "boolean"
+            },
+            "dmd_location_sensitivity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "sa_mode",
+            "enable_regex_search_chain",
+            "dmd_location_sensitivity"
+          ]
+        },
+        "special": {
+          "type": "object",
+          "properties": {
+            "merchant_on_boarding": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "merchant_on_boarding"
+          ]
+        },
+        "card_life_cycle": {
+          "type": "object",
+          "properties": {
+            "activate_upon_issue": {
+              "type": "boolean"
+            },
+            "expiration_offset": {
+              "type": "object",
+              "properties": {
+                "unit": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "unit",
+                "value"
+              ]
+            },
+            "card_service_code": {
+              "type": "integer"
+            },
+            "update_expiration_upon_activation": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "activate_upon_issue",
+            "expiration_offset",
+            "card_service_code",
+            "update_expiration_upon_activation"
+          ]
+        },
+        "clearing_and_settlement": {
+          "type": "object",
+          "properties": {
+            "overdraft_destination": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "overdraft_destination"
+          ]
+        },
+        "jit_funding": {
+          "type": "object",
+          "properties": {
+            "paymentcard_funding_source": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "refunds_destination": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "enabled",
+                "refunds_destination"
+              ]
+            },
+            "programgateway_funding_source": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "funding_source_token": {
+                  "type": "string"
+                },
+                "refunds_destination": {
+                  "type": "string"
+                },
+                "always_fund": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "enabled",
+                "funding_source_token",
+                "refunds_destination",
+                "always_fund"
+              ]
+            },
+            "program_funding_source": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "funding_source_token": {
+                  "type": "string"
+                },
+                "refunds_destination": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "enabled",
+                "funding_source_token",
+                "refunds_destination"
+              ]
+            }
+          },
+          "required": [
+            "paymentcard_funding_source",
+            "programgateway_funding_source",
+            "program_funding_source"
+          ]
+        },
+        "digital_wallet_tokenization": {
+          "type": "object",
+          "properties": {
+            "provisioning_controls": {
+              "type": "object",
+              "properties": {
+                "manual_entry": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "address_verification": {
+                      "type": "object",
+                      "properties": {
+                        "validate": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "validate"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "address_verification"
+                  ]
+                },
+                "wallet_provider_card_on_file": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "address_verification": {
+                      "type": "object",
+                      "properties": {
+                        "validate": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "validate"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "address_verification"
+                  ]
+                },
+                "in_app_provisioning": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "address_verification": {
+                      "type": "object",
+                      "properties": {
+                        "validate": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "validate"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "address_verification"
+                  ]
+                },
+                "web_push_provisioning": {
+                  "type": "object",
+                  "properties": {
+                    "wpp_apple_partner_id": {
+                      "type": "string"
+                    },
+                    "wpp_apple_card_template_id": {
+                      "type": "string"
+                    },
+                    "wpp_google_piaid": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "wpp_apple_partner_id",
+                    "wpp_apple_card_template_id",
+                    "wpp_google_piaid"
+                  ]
+                },
+                "force_yellow_path_for_card_product": {
+                  "type": "boolean"
+                },
+                "dwt_verify_atc_during_auth": {
+                  "type": "boolean"
+                },
+                "dwt_use_card_status_during_auth": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "manual_entry",
+                "wallet_provider_card_on_file",
+                "in_app_provisioning",
+                "web_push_provisioning",
+                "force_yellow_path_for_card_product",
+                "dwt_verify_atc_during_auth",
+                "dwt_use_card_status_during_auth"
+              ]
+            },
+            "card_art_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "provisioning_controls",
+            "card_art_id"
+          ]
+        },
+        "fulfillment": {
+          "type": "object",
+          "properties": {
+            "shipping": {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "type": "string"
+                },
+                "return_address": {
+                  "type": "object",
+                  "properties": {
+                    "first_name": {
+                      "type": "string"
+                    },
+                    "middle_name": {
+                      "type": "string"
+                    },
+                    "last_name": {
+                      "type": "string"
+                    },
+                    "address1": {
+                      "type": "string"
+                    },
+                    "address2": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "postal_code": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "first_name",
+                    "middle_name",
+                    "last_name",
+                    "address1",
+                    "address2",
+                    "city",
+                    "state",
+                    "postal_code",
+                    "country",
+                    "phone"
+                  ]
+                },
+                "recipient_address": {
+                  "type": "object",
+                  "properties": {
+                    "first_name": {
+                      "type": "string"
+                    },
+                    "last_name": {
+                      "type": "string"
+                    },
+                    "address1": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "postal_code": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "first_name",
+                    "last_name",
+                    "address1",
+                    "city",
+                    "state",
+                    "postal_code",
+                    "country",
+                    "phone"
+                  ]
+                }
+              },
+              "required": [
+                "method",
+                "return_address",
+                "recipient_address"
+              ]
+            },
+            "card_personalization": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "object",
+                  "properties": {
+                    "name_line_1": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "value"
+                      ]
+                    },
+                    "name_line_2": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "value"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name_line_1",
+                    "name_line_2"
+                  ]
+                },
+                "images": {
+                  "type": "object",
+                  "properties": {
+                    "card": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "thermal_color": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "thermal_color"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "card"
+                  ]
+                }
+              },
+              "required": [
+                "text",
+                "images"
+              ]
+            },
+            "payment_instrument": {
+              "type": "string"
+            },
+            "package_id": {
+              "type": "string"
+            },
+            "all_zero_card_security_code": {
+              "type": "boolean"
+            },
+            "bin_prefix": {
+              "type": "string"
+            },
+            "bulk_ship": {
+              "type": "boolean"
+            },
+            "pan_length": {
+              "type": "string"
+            },
+            "fulfillment_provider": {
+              "type": "string"
+            },
+            "allow_card_creation": {
+              "type": "boolean"
+            },
+            "uppercase_name_lines": {
+              "type": "boolean"
+            },
+            "enable_offline_pin": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "shipping",
+            "card_personalization",
+            "payment_instrument",
+            "package_id",
+            "all_zero_card_security_code",
+            "bin_prefix",
+            "bulk_ship",
+            "pan_length",
+            "fulfillment_provider",
+            "allow_card_creation",
+            "uppercase_name_lines",
+            "enable_offline_pin"
+          ]
+        }
+      },
+      "required": [
+        "poi",
+        "transaction_controls",
+        "selective_auth",
+        "special",
+        "card_life_cycle",
+        "clearing_and_settlement",
+        "jit_funding",
+        "digital_wallet_tokenization",
+        "fulfillment"
+      ]
+    },
+    "created_time": {
+      "type": "string"
+    },
+    "last_modified_time": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "token",
+    "name",
+    "active",
+    "start_date",
+    "config",
+    "created_time",
+    "last_modified_time"
+  ]
+}

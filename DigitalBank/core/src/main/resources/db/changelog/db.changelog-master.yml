@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db/changelog/db.changelog-initial_schema.sql
+  - include:
+      file: classpath:db/changelog/db.changelog-initial_data.sql
+  - include:
+      file: classpath:db/changelog/db.changelog-update_account_table.sql
+  - include:
+      file: classpath:db/changelog/db.changelog-create_card_table.sql
+  - include:
+      file: classpath:db/changelog/db.changelog-add_preceding_token_to_transaction.sql
+  - include:
+      file: classpath:db/changelog/db.changelog-create_user_table.sql
+  - include:
+      file: classpath:db/changelog/db.changelog-add_unique_transaction_token_const.sql

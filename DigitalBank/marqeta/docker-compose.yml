@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+
+  accelerator_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: marqeta_app:latest
+    container_name: marqeta_app
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - digitalbank_network
+
+networks:
+  digitalbank_network:
+    driver: bridge

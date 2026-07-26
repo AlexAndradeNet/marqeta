@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "address1": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "birth_date": {
+      "type": "string"
+    },
+    "uses_parent_account": {
+      "type": "boolean"
+    },
+    "corporate_card_holder": {
+      "type": "boolean"
+    },
+    "created_time": {
+      "type": "string"
+    },
+    "last_modified_time": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "account_holder_group_token": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "token",
+    "active",
+    "first_name",
+    "last_name",
+    "email",
+    "address1",
+    "city",
+    "state",
+    "postal_code",
+    "country",
+    "birth_date",
+    "uses_parent_account",
+    "corporate_card_holder",
+    "created_time",
+    "last_modified_time",
+    "metadata",
+    "account_holder_group_token",
+    "status"
+  ]
+}

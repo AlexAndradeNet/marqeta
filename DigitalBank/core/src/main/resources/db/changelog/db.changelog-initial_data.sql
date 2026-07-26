@@ -1,0 +1,40 @@
+--liquibase formatted sql
+--changeset MartinP:02
+--comment: create initial data
+INSERT
+    INTO
+        account(
+            account_id,
+            user_id,
+            card_id,
+            account_balance,
+            reservation_balance
+        )
+    VALUES(
+        DEFAULT,
+        1,
+        '1001',
+        1000.00,
+        0.00
+    ),
+    (
+        DEFAULT,
+        2,
+        '1002',
+        2000.00,
+        50.00
+    ),
+    (
+        DEFAULT,
+        3,
+        '1003',
+        3000.00,
+        103.00
+    ),
+    (
+        12345,
+        12345,
+        '12345',
+        0.00,
+        0.00
+    );

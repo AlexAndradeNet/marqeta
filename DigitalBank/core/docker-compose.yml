@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-bullseye
+    container_name: accelerator_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: accelerator_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - digitalbank_network
+
+  core_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: core_app:latest
+    container_name: core_app
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - digitalbank_network
+
+networks:
+  digitalbank_network:
+    driver: bridge
+
+volumes:
+  pgdata:
