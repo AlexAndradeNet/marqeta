@@ -1,0 +1,13 @@
+{
+  "id": "unit-test-agent",
+  "connection-type": "local",
+  "skillsUsed": [
+    "first-principles"
+  ],
+  "language": "Java",
+  "testFramework": "JUnit5",
+  "coverageTool": "JaCoCo",
+  "modelConfig": {
+    "mode": "standard"
+  }
+}

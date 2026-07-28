@@ -1,0 +1,17 @@
+{
+  "id": "test-plan-agent",
+  "connection-type": "local",
+  "skillsUsed": [
+    "first-principles",
+    "poised-heuristic"
+  ],
+  "language": "Java",
+  "produces": [
+    "memories/unit-test-plan.md",
+    "memories/integration-test-plan.md"
+  ],
+  "modelConfig": {
+    "mode": "reasoning",
+    "reasoningEffort": "high"
+  }
+}

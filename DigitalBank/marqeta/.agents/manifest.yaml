@@ -1,0 +1,43 @@
+bundle:
+  id: qa-java-bundle
+  version: 1.4.1
+  description: Java QA Automation Bundle
+
+protocol:
+  name: dot-agents
+  version: 1.0
+
+runtime:
+  minimum: 0.8.0
+
+metadata:
+  author: AlexAndrade.Net
+  license: MIT
+
+  tags:
+    - java
+    - spring
+    - testing
+    - junit
+    - karate
+
+  repositoryLayout:
+    business: root
+    integration: sibling
+
+  capabilities:
+    - planning
+    - unit-tests
+    - integration-tests
+    - stabilization
+    - allure
+    - coverage
+
+skills:
+
+  required:
+    - first-principles
+    - poised-heuristic
+
+  optional:
+    - karate-allure-setup

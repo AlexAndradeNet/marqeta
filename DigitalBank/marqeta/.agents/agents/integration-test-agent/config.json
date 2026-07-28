@@ -1,0 +1,15 @@
+{
+  "id": "integration-test-agent",
+  "connection-type": "local",
+  "skillsUsed": [
+    "poised-heuristic",
+    "karate-allure-setup",
+    "first-principles"
+  ],
+  "language": "Java",
+  "testFramework": "Karate DSL",
+  "reporting": "Allure",
+  "modelConfig": {
+    "mode": "standard"
+  }
+}

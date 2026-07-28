@@ -52,7 +52,7 @@ site [Confluence page](https://blankfactor.atlassian.net/wiki/spaces/Marqueta/pa
 
 ## 🚀 EXECUTION
 
-During the first execution the database and tables are created.
+During the first execution the database and tables are created. The application runs in the port 8080 as default.
 
 ### Run application in Docker
 

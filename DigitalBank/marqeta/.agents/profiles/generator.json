@@ -1,0 +1,14 @@
+{
+  "toolConfig": {
+    "enabledServers": [
+      "filesystem",
+      "git",
+      "mvn"
+    ],
+    "enabledRuntimeTools": [
+      "execute_command",
+      "read_more_context",
+      "mark_work_complete"
+    ]
+  }
+}

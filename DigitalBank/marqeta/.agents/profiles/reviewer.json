@@ -1,0 +1,16 @@
+{
+  "toolConfig": {
+    "enabledServers": [
+      "filesystem",
+      "git"
+    ],
+    "disabledTools": [
+      "filesystem:delete_file",
+      "filesystem:write_file"
+    ],
+    "enabledRuntimeTools": [
+      "read_more_context",
+      "mark_work_complete"
+    ]
+  }
+}

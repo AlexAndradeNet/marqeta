@@ -1,0 +1,58 @@
+toolchain:
+
+  language:
+    id: java
+    version: 17
+
+  buildTool:
+    id: maven
+    command: mvn
+
+  formatter:
+    id: spotless
+    command: mvn spotless:apply
+
+  linter:
+    id: spotless
+    command: mvn spotless:apply
+
+  build:
+    id: maven
+    command: mvn clean package
+
+  unitTest:
+    id: junit
+    command: mvn clean test
+
+  integrationTest:
+    id: failsafe
+    command: mvn clean verify
+
+  publishURLCommand:
+    id: ngrok
+    # Must match project.localPort
+    command: ngrok http 8081
+
+project:
+  sourceDir: src/main/java
+  testDir: src/test/java
+  buildDir: target
+  localPort: 8081
+  integrationDir: ../<Project>QA
+
+reports:
+
+  allure:
+    enabled: true
+    output: target/allure-report
+
+  coverage:
+    tool: jacoco
+    output: target/site/jacoco
+
+  summary:
+    output: qa-summary.md
+
+thresholds:
+  coverage: 80
+  flakyRetries: 2

@@ -1,0 +1,23 @@
+{
+  "id": "qa-bundle-orchestrator",
+  "connection-type": "local",
+  "delegatesTo": [
+    "test-plan-agent",
+    "plan-reviewer-agent",
+    "unit-test-agent",
+    "integration-test-agent"
+  ],
+  "parallelPhases": {
+    "code-generation": [
+      "unit-test-agent",
+      "integration-test-agent"
+    ]
+  },
+  "tasks": [
+    "stabilize-test-suite"
+  ],
+  "skillsUsed": [],
+  "modelConfig": {
+    "mode": "standard"
+  }
+}
