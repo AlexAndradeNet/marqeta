@@ -37,7 +37,7 @@ Minimal requirements:
 ## More info
 
 - Core Bank [README](DigitalBank/core/README.md) file.
-- Marqeta Gateway [README](DigitalBank/core/README.md) file.
+- Marqeta Gateway [README](DigitalBank/marqeta/README.md) file.
 - Integration Tests Suite [README](DigitalBankQA/README.md) file.
 
 ## How to contribute
