@@ -6,7 +6,7 @@ This project simulates the payment-gateway for Marqeta.
 
 ## ✏️ HOW TO CONTRIBUTE
 
-See [CONTRIBUTE.md](../CONTRIBUTE.md)
+See [CONTRIBUTE.md](../../CONTRIBUTE.md)
 
 ---
 

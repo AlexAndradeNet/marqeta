@@ -13,7 +13,7 @@ This project simulates be a bank in a payment-gateway process.
 
 ## About this repo
 
-This is a mono-repo project, with the following caracteristics:
+This is a mono-repo project, with the following characteristics:
 
 * No language specific. New projects can be added in any language.
 * Architecture: Clean Architecture.
@@ -27,18 +27,17 @@ This repo contains the following projects:
 
 ## ✏️ HOW TO CONTRIBUTE
 
-See [CONTRIBUTE.md](CONTRIBUTE.md)
+See [CONTRIBUTE.md](../CONTRIBUTE.md)
 
 ---
 
 ## ✅ MONOREPO MANAGEMENT
 
 Every project has its own README.md file with instructions to run it locally.
-You can run each project separately, but if you want to running all projects at the same time, you can use the following
+You can run each project separately, but if you want to run all projects at the same time, you can use the following
 tools (scripts):
 
 ### Tools
 
-* Dockerize all projects: `sh scripts/docker-run-all-apps.sh`
-* Run sonarqube in all projects: `sh scripts/sonar_check.sh`
-* Run linters to all projects: `sh scripts/linter_fix.sh`
+* Dockerize all projects: `sh ../scripts/docker-run-all-apps.sh`
+* Run sonarqube in all projects: `sh ../scripts/sonar_check.sh`

@@ -10,7 +10,7 @@ detect any changes and assess their impact on the Blankfactor Digital Bank.
 
 ## ✏️ HOW TO CONTRIBUTE
 
-See [CONTRIBUTE.md](CONTRIBUTE.md)
+See [CONTRIBUTE.md](../CONTRIBUTE.md)
 
 ---
 
@@ -69,7 +69,7 @@ public or local url.
 To local launch you need to go to the root of the project and execute:
 
 ```bash
-sh scripts/docker-run-all-apps.sh
+sh ../scripts/docker-run-all-apps.sh
 ```
 
 And you have to expose Marqeta to the internet with ngrok:

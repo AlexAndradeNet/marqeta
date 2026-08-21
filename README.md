@@ -23,7 +23,7 @@ Minimal requirements:
 2. Start Docker.
 3. Run the following script:
     ```bash
-    sh DigitalBank/scripts/docker-run-all-apps.sh
+    sh scripts/docker-run-all-apps.sh
     ```
 4. Expose the URL (more details [here](DigitalBank/marqeta/README.md)):
     ```bash
@@ -42,4 +42,4 @@ Minimal requirements:
 
 ## How to contribute
 
-Follow [these instructions](DigitalBankQA/CONTRIBUTE.md) to contribute to this repo.
+Follow [these instructions](CONTRIBUTE.md) to contribute to this repo.

@@ -59,8 +59,8 @@ fn_main() {
 
   cd "$script_dir" || fn_fail "Cannot change directory to script directory"
 
-  fn_rebuild_compose_project "../core" "Core"
-  fn_rebuild_compose_project "../marqeta" "Marqeta"
+  fn_rebuild_compose_project "DigitalBank/core" "Core"
+  fn_rebuild_compose_project "DigitalBank/marqeta" "Marqeta"
 
   fn_print_message "All services rebuilt and started successfully"
   exit 0

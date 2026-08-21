@@ -278,7 +278,7 @@
                 <version>3.4.1</version>
                 <configuration>
                     <installHooks>
-                        <pre-commit>scripts/pre-commit.sh</pre-commit>
+                        <pre-commit>../../scripts/pre-commit.sh</pre-commit>
                     </installHooks>
                     <gitConfig>
                         <custom.configuration>true</custom.configuration>

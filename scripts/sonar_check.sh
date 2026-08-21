@@ -16,7 +16,7 @@ function fnCheckIfSonarIsRunning() {
         if nc -z "$host" "$port"; then
             echo "SonarQube is up."
         else
-            fnPrintResultMessage "ERROR: SonarQube is down. Check file CONTRIBUTE.md to know how to start it."
+            fnPrintResultMessage "ERROR: SonarQube is down. Check file /CONTRIBUTE.md to know how to start it."
             exit 1
         fi
     else

@@ -6,7 +6,7 @@ This project simulates be a bank for payment-gateway process.
 
 ## ✏️ HOW TO CONTRIBUTE
 
-See [CONTRIBUTE.md](../CONTRIBUTE.md)
+See [CONTRIBUTE.md](../../CONTRIBUTE.md)
 
 ---
 
