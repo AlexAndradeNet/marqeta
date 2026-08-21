@@ -1,0 +1,65 @@
+meta {
+  name: Simulate Authorization
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/simulate/authorization
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "amount": "1000",
+    "mid": "11111",
+    "card_token": "{{cardToken}}",
+    "is_pre_auth": false,
+    "transaction_options": {
+      "additional_data": "my_additional data"
+    },
+    "card_acceptor": {
+      "name": "Blankfactor Inc",
+      "address": "Blankfactor Headquarters",
+      "city": "Medellin",
+      "state": "CA",
+      "zip": "94702"
+    },
+    "webhook": {
+      "endpoint": "{{webhookEndpoint}}",
+      "username": "{{webhookUser}}",
+      "password": "{{webhookPass}}"
+    }
+  }
+}
+
+script:post-response {
+  expect(res.getStatus()).to.equal(201);
+  
+  const body = res.getBody();
+  
+  // Marqeta returns the card token in the response
+  if (body && body.transaction) {
+    if (body.transaction.state) {
+      expect(body.transaction.state).to.equal('PENDING')
+    }
+    if (body.transaction.token) {
+      bru.setEnvVar("originalTxnToken", body.transaction.token);
+      console.log("Saved originalTxnToken:", body.transaction.token);
+    }
+  }
+}
+
+docs {
+  ## Simulate Authorization
+  Simulates a card authorization of $1000.
+  Save the returned transaction token as `originalTxnToken` for subsequent reversal/clearing.
+  Expected status: 201
+}

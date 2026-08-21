@@ -1,0 +1,41 @@
+meta {
+  name: Simulate Reversal
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/simulate/reversal
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "amount": "1000",
+    "original_transaction_token": "{{originalTxnToken}}",
+    "webhook": {
+      "endpoint": "{{webhookEndpoint}}",
+      "username": "{{webhookUser}}",
+      "password": "{{webhookPass}}"
+    }
+  }
+}
+
+script:post-response {
+  expect(res.getStatus()).to.equal(201);
+  
+}
+
+docs {
+  ## Simulate Reversal
+  Reverses a previous authorization.
+  Requires `originalTxnToken` from a prior Simulate Authorization.
+  Expected status: 201
+}

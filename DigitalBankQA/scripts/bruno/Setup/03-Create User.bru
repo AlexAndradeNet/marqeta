@@ -1,0 +1,45 @@
+meta {
+  name: Create User
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "first_name": "Alex",
+    "last_name": "Andrade",
+    "token": "{{userToken}}",
+    "uses_parent_account": false,
+    "email": "{{$timestamp}}@blankfactor.com",
+    "birth_date": "1983-01-30",
+    "address1": "Address Address",
+    "city": "Medellin",
+    "state": "CA",
+    "country": "RO",
+    "postal_code": "12345",
+    "account_holder_group_token": "DEFAULT_AHG"
+  }
+}
+
+script:post-response {
+  expect(res.getStatus()).to.equal(201);
+  
+}
+
+docs {
+  ## Create User
+  Creates a cardholder user in Marqeta.
+  Expected status: 201
+}

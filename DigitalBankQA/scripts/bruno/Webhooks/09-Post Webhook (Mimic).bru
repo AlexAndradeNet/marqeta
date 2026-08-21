@@ -1,0 +1,150 @@
+meta {
+  name: Post Webhook (Mimic Event)
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{webhookEndpoint}}
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "transactions": [
+      {
+        "type": "authorization.reversal",
+        "state": "PENDING",
+        "identifier": "66",
+        "token": "2ae9e866-2ba3-4f4f-90ec-95ad93382130",
+        "user_token": "{{userToken}}",
+        "acting_user_token": "{{userToken}}",
+        "card_token": "{{cardToken}}",
+        "card_product_token": "{{cardProductToken}}",
+        "original_credit": {
+          "fast_funds_enabled": false
+        },
+        "preceding_related_transaction_token": "{{originalTxnToken}}",
+        "gpa": {
+          "currency_code": "USD",
+          "ledger_balance": 400.00,
+          "available_balance": 0.00,
+          "credit_balance": 0.00,
+          "pending_credits": 0.00,
+          "impacted_amount": -1000.00,
+          "balances": {
+            "USD": {
+              "currency_code": "USD",
+              "ledger_balance": 400.00,
+              "available_balance": 0.00,
+              "credit_balance": 0.00,
+              "pending_credits": 0.00,
+              "impacted_amount": -1000.00
+            }
+          }
+        },
+        "gpa_order": {
+          "token": "2ae9e866-2ba3-4f4f-90ec-95ad93382130",
+          "amount": 1000.00,
+          "created_time": "2023-08-02T14:53:41Z",
+          "last_modified_time": "2023-08-02T14:55:18Z",
+          "transaction_token": "{{originalTxnToken}}",
+          "state": "COMPLETION",
+          "response": {
+            "code": "0000",
+            "memo": "Approved or completed successfully"
+          },
+          "funding": {
+            "amount": 1000.00,
+            "source": {
+              "type": "programgateway",
+              "token": "**********fs_6",
+              "name": "JIT Funding Source",
+              "active": true,
+              "is_default_account": false,
+              "created_time": "2023-08-02T14:52:40Z",
+              "last_modified_time": "2023-08-02T14:52:40Z"
+            }
+          },
+          "funding_source_token": "**********fs_6",
+          "jit_funding": {
+            "token": "19cb9db2-56b0-40bf-ab9c-3b5059652906",
+            "method": "pgfs.authorization.capture",
+            "user_token": "{{userToken}}",
+            "acting_user_token": "{{userToken}}",
+            "amount": 1000.00,
+            "original_jit_funding_token": "my_jit_funding_response_token"
+          },
+          "user_token": "{{userToken}}",
+          "currency_code": "USD"
+        },
+        "duration": 199,
+        "created_time": "2023-08-02T14:55:18Z",
+        "user_transaction_time": "2023-08-02T14:53:40Z",
+        "settlement_date": "2023-08-02T00:00:00Z",
+        "request_amount": 1000.00,
+        "amount": 1000.00,
+        "currency_code": "USD",
+        "approval_code": "591466",
+        "response": {
+          "code": "0000",
+          "memo": "Approved or completed successfully"
+        },
+        "network": "DISCOVER",
+        "acquirer_fee_amount": 0,
+        "acquirer": {
+          "institution_id_code": "000000",
+          "system_trace_audit_number": "000004"
+        },
+        "user": {
+          "metadata": {}
+        },
+        "card": {
+          "last_four": "5220",
+          "metadata": {}
+        },
+        "issuer_received_time": "2023-08-02T14:55:18.343Z",
+        "issuer_payment_node": "90d8f89dd75c0b6220f80a225b636f96",
+        "network_reference_id": "927984544176",
+        "card_acceptor": {
+          "mid": "11111",
+          "mcc": "6411",
+          "name": "Chicken Tooth Music",
+          "street_address": "111 Main St",
+          "city": "Berkeley",
+          "state": "CA",
+          "postal_code": "94702",
+          "country_code": "USA"
+        },
+        "pos": {
+          "pin_present": false,
+          "partial_approval_capable": false,
+          "purchase_amount_only": false,
+          "is_recurring": false,
+          "is_installment": false
+        }
+      }
+    ]
+  }
+}
+
+script:post-response {
+  expect(res.getStatus()).to.equal(200);
+  
+}
+
+docs {
+  ## Post Webhook (Mimic)
+  Example payload sent to the external webhook endpoint in "mimic" scenarios
+  (e.g. Mimic reversal / Mimic clearing). Used to simulate Marqeta webhook events
+  against the local/ngrok service.
+  Change `type` to "authorization.clearing" for clearing mimic.
+  Expected status: 200
+}

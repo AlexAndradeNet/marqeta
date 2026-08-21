@@ -1,0 +1,139 @@
+meta {
+  name: Create Card Product
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/cardproducts
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "My Card Product",
+    "token": "{{fundingSourceToken}}",
+    "start_date": "2021-04-27",
+    "config": {
+      "poi": {
+        "ecommerce": false,
+        "atm": false,
+        "other": {
+          "allow": true,
+          "card_presence_required": false,
+          "cardholder_presence_required": false
+        }
+      },
+      "transaction_controls": {
+        "accepted_countries_token": "accept_us_only",
+        "always_require_pin": false,
+        "always_require_icc": false,
+        "allow_gpa_auth": true,
+        "require_card_not_present_card_security_code": false,
+        "allow_mcc_group_authorization_controls": true,
+        "ignore_card_suspended_state": false,
+        "allow_network_load": false,
+        "allow_network_load_card_activation": false,
+        "allow_quasi_cash": false,
+        "enable_partial_auth_approval": true,
+        "notification_language": "fra"
+      },
+      "fulfillment": {
+        "shipping": {
+          "return_address": {
+            "address1": "40128 Romaine Square",
+            "address2": "",
+            "city": "Medellin",
+            "state": "CA",
+            "postal_code": "93257",
+            "country": "USA",
+            "phone": "317-241-5118",
+            "first_name": "Alex",
+            "middle_name": "",
+            "last_name": "Andrade"
+          },
+          "recipient_address": {
+            "address1": "40128 Romaine Square",
+            "city": "Medellin",
+            "state": "CA",
+            "postal_code": "94702",
+            "country": "USA",
+            "phone": "317-241-5118",
+            "first_name": "Alex",
+            "last_name": "Andrade"
+          },
+          "method": "OVERNIGHT"
+        },
+        "card_personalization": {
+          "text": {
+            "name_line_1": {
+              "value": "Alex Andrade"
+            },
+            "name_line_2": {
+              "value": "Blankfactor"
+            }
+          },
+          "images": {
+            "card": {
+              "name": "my_card_logo.png",
+              "thermal_color": "Black"
+            }
+          }
+        },
+        "payment_instrument": "PHYSICAL_MSR",
+        "package_id": "0",
+        "all_zero_card_security_code": false,
+        "bin_prefix": "111111",
+        "bulk_ship": false,
+        "pan_length": "16",
+        "fulfillment_provider": "PERFECTPLASTIC"
+      },
+      "selective_auth": {
+        "sa_mode": 1,
+        "enable_regex_search_chain": false,
+        "dmd_location_sensitivity": 0
+      },
+      "card_life_cycle": {
+        "activate_upon_issue": true,
+        "expiration_offset": {
+          "unit": "YEARS",
+          "value": 10
+        },
+        "card_service_code": 101,
+        "update_expiration_upon_activation": false
+      },
+      "jit_funding": {
+        "programgateway_funding_source": {
+          "enabled": true,
+          "funding_source_token": "{{fundingSourceToken}}"
+        }
+      }
+    }
+  }
+}
+
+script:post-response {
+  expect(res.getStatus()).to.equal(201);
+  
+  const body = res.getBody();
+  
+  // Marqeta returns the card token in the response
+  if (body && body.token) {
+    bru.setEnvVar("cardProductToken", body.token);
+    console.log("Saved cardProductToken:", body.token);
+  }
+}
+
+docs {
+  ## Create Card Product
+  Creates a card product with JIT funding enabled.
+  Note: Replace `fundingSourceToken` with the token returned from Create Funding Source.
+  Expected status: 201
+}

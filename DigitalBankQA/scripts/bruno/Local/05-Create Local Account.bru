@@ -1,0 +1,32 @@
+meta {
+  name: Create Local Account (Port)
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{localPort}}/port/account/create
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "cardId": "{{cardToken}}",
+    "accountBalance": 10000.0,
+    "reservationBalance": 0.0
+  }
+}
+
+docs {
+  ## Create Local Account
+  Calls the local Blankfactor/port service to create an account linked to the Marqeta card.
+  Requires local service running on port 8080.
+  Expected status: 201
+}

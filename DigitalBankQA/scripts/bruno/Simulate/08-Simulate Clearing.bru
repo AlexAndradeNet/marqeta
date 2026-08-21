@@ -1,0 +1,41 @@
+meta {
+  name: Simulate Clearing
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/simulate/clearing
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "amount": "1000",
+    "original_transaction_token": "{{originalTxnToken}}",
+    "webhook": {
+      "endpoint": "{{webhookEndpoint}}",
+      "username": "{{webhookUser}}",
+      "password": "{{webhookPass}}"
+    }
+  }
+}
+
+script:post-response {
+  expect(res.getStatus()).to.equal(201);
+  
+}
+
+docs {
+  ## Simulate Clearing
+  Clears (settles) a previous authorization.
+  Requires `originalTxnToken` from a prior Simulate Authorization.
+  Expected status: 201
+}

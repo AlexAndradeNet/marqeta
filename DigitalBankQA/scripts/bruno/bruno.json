@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Serenity Marqeta / Blankfactor Collection",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

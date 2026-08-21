@@ -1,0 +1,59 @@
+meta {
+  name: Create Funding Source (Program Gateway)
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/fundingsources/programgateway
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "active": true,
+    "name": "JIT Funding Source 0001",
+    "url": "{{fundingSourceUrl}}",
+    "basic_auth_username": "{{jitUsername}}",
+    "basic_auth_password": "{{jitPassword}}",
+    "use_mtls": false
+  }
+}
+
+script:post-response {
+  expect(res.getStatus()).to.equal(201);
+  
+  const body = res.getBody();
+  
+  // Marqeta returns the card token in the response
+  if (body) {
+    if (body.url) {
+      const expectedUrl = bru.getEnvVar("fundingSourceUrl");
+      expect(body.url, "Funding source URL should match the configured value").to.include(expectedUrl);
+    }
+    
+    if (body.token) {
+      bru.setEnvVar("fundingSourceToken", body.token);
+      console.log("Saved fundingSourceToken:", body.token);
+    }
+    
+    if (body.created_time) {
+      bru.setEnvVar("userToken", body.created_time);
+      console.log("Saved userToken:", body.created_time);
+    }
+  }
+}
+
+docs {
+  ## Create JIT Funding Source
+  From Serenity tests: creates a program gateway funding source pointing to the local JIT endpoint.
+  Expected status: 201
+  Response includes `token` which is used later as funding_source_token in card product config.
+}

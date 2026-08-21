@@ -1,0 +1,46 @@
+meta {
+  name: Create Card
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/cards
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{authHeader}}
+  Accept: */*
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "user_token": "{{userToken}}",
+    "card_product_token": "{{cardProductToken}}",
+    "metadata": {
+      "key1": "test 3"
+    }
+  }
+}
+
+script:post-response {
+  expect(res.getStatus()).to.equal(201);
+  
+  const body = res.getBody();
+  
+  // Marqeta returns the card token in the response
+  if (body && body.token) {
+    bru.setEnvVar("cardToken", body.token);
+    console.log("Saved cardToken:", body.token);
+  }
+}
+
+docs {
+  ## Create Card
+  Issues a card for the user against the card product.
+  Save the returned `token` as `cardToken` environment variable.
+  Expected status: 201
+}
