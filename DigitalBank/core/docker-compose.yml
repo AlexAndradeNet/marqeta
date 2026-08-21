@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:15-bullseye
-    container_name: accelerator_db
+    container_name: acceleratordb
     restart: always
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: accelerator_db
+      POSTGRES_DB: acceleratordb
     ports:
       - "5432:5432"
     volumes:
@@ -16,12 +14,12 @@ services:
     networks:
       - digitalbank_network
 
-  core_app:
+  coreapp:
     build:
       context: .
       dockerfile: Dockerfile
-    image: core_app:latest
-    container_name: core_app
+    image: coreapp:latest
+    container_name: coreapp
     restart: always
     ports:
       - "8080:8080"
@@ -29,10 +27,13 @@ services:
       - postgres
     networks:
       - digitalbank_network
+    environment:
+      - DATABASE_URL=jdbc:postgresql://postgres:5432/accelerator_db
 
 networks:
   digitalbank_network:
-    driver: bridge
+    driver: bridge # Create the bridge network if it doesn't exist
+    name: digitalbank_network # Force the network name to match the existing network created here
 
 volumes:
   pgdata:

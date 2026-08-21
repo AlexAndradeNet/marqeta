@@ -1,13 +1,14 @@
 # Stage 1: Build the application
 FROM public.ecr.aws/docker/library/maven:3.8.3-amazoncorretto-17 AS build
 WORKDIR /app
+# Copy source
+COPY src /app/src
 # Copy pom
 COPY pom.xml /app
 # Disable git hooks
 RUN sed -i "s/<!-- Git Hooks -->/<!-- Git Hooks --><!--/g" "pom.xml"
 RUN sed -i "s/<!-- Sonarqube and Test -->/--><!-- Sonarqube and Test -->/g" "pom.xml"
-# Copy source
-COPY src /app/src
+# Copy environment files
 COPY .env* /app/
 # Build
 RUN mvn dependency:go-offline dependency:resolve dependency:resolve-plugins

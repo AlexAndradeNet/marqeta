@@ -10,7 +10,6 @@ RUN sed -i "s/<!-- Git Hooks -->/<!-- Git Hooks --><!--/g" "pom.xml"
 RUN sed -i "s/<!-- Sonarqube and Test -->/--><!-- Sonarqube and Test -->/g" "pom.xml"
 # Copy environment files
 COPY .env /app/.env
-RUN sed -i "s/localhost/postgres/g" ".env"
 # Build
 RUN mvn dependency:go-offline dependency:resolve dependency:resolve-plugins
 RUN mvn package spring-boot:repackage
