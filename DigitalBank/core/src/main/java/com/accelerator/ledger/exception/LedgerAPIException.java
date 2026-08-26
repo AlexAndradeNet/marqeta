@@ -11,4 +11,8 @@ public class LedgerAPIException extends Exception implements Serializable {
     public LedgerAPIException(String message) {
         super(message);
     }
+
+    public LedgerAPIException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LedgerAPIAdapter implements LedgerPort {
 
+    private static final String INVALID_LEDGER_RESPONSE_MESSAGE = "Invalid Ledger response";
     private static final String LEDGER_VERSION = "1";
     private static final String LEDGER_RESERVATION_DESCRIPTION =
             "Performing reservation to transit account";
@@ -40,16 +41,17 @@ public class LedgerAPIAdapter implements LedgerPort {
                         accountingEntryMapper.toRequest(source),
                         accountingEntryMapper.toRequest(target)));
 
+        LedgerResponse response;
         try {
-            LedgerResponse response = ledgerClient.processReservation(ledgerRequest).getBody();
-
-            if (Objects.isNull(response) || Objects.isNull(response.getReservationId())) {
-                throw new LedgerAPIException("Invalid Ledger response: null object or reservationId");
-            }
-
-            return response.getReservationId();
+            response = ledgerClient.processReservation(ledgerRequest).getBody();
         } catch (Exception e) {
-            throw new LedgerAPIException("Invalid Ledger response: " + e.getMessage());
+            throw new LedgerAPIException(INVALID_LEDGER_RESPONSE_MESSAGE, e);
         }
+
+        if (Objects.isNull(response) || Objects.isNull(response.getReservationId())) {
+            throw new LedgerAPIException(INVALID_LEDGER_RESPONSE_MESSAGE);
+        }
+
+        return response.getReservationId();
     }
 }
