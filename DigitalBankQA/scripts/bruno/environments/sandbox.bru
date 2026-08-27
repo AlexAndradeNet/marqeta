@@ -1,21 +1,30 @@
 vars {
   baseUrl: https://sandbox-api.marqeta.com/v3
   localPort: http://localhost:8080
-  webhookBase: https://40c5-152-203-67-34.ngrok-free.app
   fundingSourceUrl: {{webhookBase}}/external/gateway/jit
   webhookEndpoint: {{webhookBase}}/external/webhook
   webhookUser: my_username
   jitUsername: my_username_of_20_char
-  userToken: 2026-08-21T04:11:08Z
-  cardProductToken: 53332e28-e2dc-4eca-8f7b-bf47cfa70428
-  cardToken: f93ab3dd-6603-4def-993c-335c1db48cec
-  fundingSourceToken: 53332e28-e2dc-4eca-8f7b-bf47cfa70428
-  originalTxnToken: 01a02284-3c5e-7af8-a662-92dfe809e0ef
 }
 vars:secret [
-  appToken,
-  accessToken,
-  authHeader,
+  @description('Your Marqeta User')
+  marqetaUser,
+  @description('Value: p4ssw0rd0fMin20Characters_')
+  jitPassword,
+  @description('Value: My_passw0rd')
   webhookPass,
-  jitPassword
+  @description('Your Marqeta Pass')
+  marqetaPass,
+  @description("Don't change it. No a secret, but it prevents Git from tracking it's changes")
+  userToken,
+  @description("Don't change it. No a secret, but it prevents Git from tracking it's changes")
+  cardProductToken,
+  @description("Don't change it. No a secret, but it prevents Git from tracking it's changes")
+  cardToken,
+  @description("Don't change it. No a secret, but it prevents Git from tracking it's changes")
+  fundingSourceToken,
+  @description("Don't change it. No a secret, but it prevents Git from tracking it's changes")
+  originalTxnToken,
+  @description("Update your Ngrok URL. No a secret, but it prevents Git from tracking it's changes")
+  webhookBase
 ]

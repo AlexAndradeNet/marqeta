@@ -7,13 +7,17 @@ meta {
 post {
   url: {{baseUrl}}/cards
   body: json
-  auth: none
+  auth: basic
 }
 
 headers {
-  Authorization: {{authHeader}}
   Accept: */*
   Content-Type: application/json
+}
+
+auth:basic {
+  username: {{marqetaUser}}
+  password: {{marqetaPass}}
 }
 
 body:json {
