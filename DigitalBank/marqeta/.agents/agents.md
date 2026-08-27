@@ -24,9 +24,9 @@ API, with combined Allure reporting.
 - **App listen port: `8081`** (`http://localhost:8081`). Integration tests reach it via a tunnel of this port; set `DIGITALBANK_PUBLIC_URL` to that public URL (`toolchain.publishURLCommand`).
 
 ## External servers
+- Ledger: http://localhost:8087
 - Core bank backend: http://localhost:8080
 - Core bank DB: jdbc:postgresql://localhost:5432/accelerator_db
-- Ledger: https://marqeta-blankfactor.free.beeceptor.com
 
 ## Credentials for Integration Tests
 The test suite should read the following environment variables before execution

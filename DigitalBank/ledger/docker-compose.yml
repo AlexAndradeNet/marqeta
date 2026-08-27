@@ -1,0 +1,14 @@
+services:
+  ledger:
+    build: .
+    container_name: ledger
+    ports:
+      - "8087:8087"
+    command: node server.mjs
+    networks:
+      digitalbank_network:
+
+networks:
+  digitalbank_network:
+    external: true # Use the existing network created by core/docker-compose.yml
+    name: digitalbank_network # Force the network name to match the existing network created by core/docker-compose.yml

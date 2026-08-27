@@ -71,10 +71,10 @@ container stopped.
 
 ### Mocking the Ledger
 
-The ledger is a third-party service outside our control. In integration tests, it is mocked using [Beeceptor](https://beeceptor.com/).
+The ledger is a third-party service outside our control. In integration tests, it is mocked using http://localhost:8087.
 
 **Mock base endpoint (example):**
-`https://marqeta-blankfactor.free.beeceptor.com`
+`http://localhost:8087`
 
 **Route:**
 `POST` `/v1/parties/digitalbank/accounting-transaction/reservation/webhook`

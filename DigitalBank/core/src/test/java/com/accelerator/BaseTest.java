@@ -45,6 +45,8 @@ public class BaseTest {
     protected static Transaction expectedTransaction;
     protected static final String CONTENT_TYPE = "application/json";
     protected static final int TRANSIT_ACCOUNT_ID = 33333;
+    // Do not replace this 8089 for 8087, this is the
+    // internally mocked Ledger
     protected static final int SERVER_PORT = 8089;
     protected static final String LEDGER_SUCCESS_RESPONSE =
             "{\"versionResponse\": \"alpha\", \"reservationId\":"

@@ -29,6 +29,7 @@ services:
       - digitalbank_network
     environment:
       - DATABASE_URL=jdbc:postgresql://postgres:5432/accelerator_db
+      - LEDGER_API_URL=http://ledger:8087
 
 networks:
   digitalbank_network:
