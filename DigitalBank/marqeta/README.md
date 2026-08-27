@@ -69,6 +69,26 @@ main" function.
 NOTE: its necessary to have the _database_ and _Core_ project running in IntelliJ/Docker and the _Marqeta_
 container stopped.
 
+### Mocking the Ledger
+
+The ledger is a third-party service outside our control. In integration tests, it is mocked using [Beeceptor](https://beeceptor.com/).
+
+**Mock base endpoint (example):**
+`https://marqeta-blankfactor.free.beeceptor.com`
+
+**Route:**
+`POST` `/v1/parties/digitalbank/accounting-transaction/reservation/webhook`
+
+**Response:** `200 OK`
+
+```json
+{
+    "versionResponse": "alpha",
+    "reservationId": "8afa90f9-5fec-428f-bd17-aec9cc657284"
+}
+```
+Update the base endpoint in the `.env` files with the mock URL.
+
 ### Ngrok
 
 The Marqeta's System requires you have a public IP. If you don't have a public IP, you can use ngrok to expose your

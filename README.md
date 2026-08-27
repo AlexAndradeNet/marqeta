@@ -19,13 +19,14 @@ Minimal requirements:
 ## Instructions
 
 ### Run the application
-1. Move the `.env.sample` files to `.env` and modify the marqeta's project to have the credentials.
-2. Start Docker.
-3. Run the following script:
+1. Create a mock for the Ledger service. See [here](DigitalBank/marqeta/README.md) for more details.
+2. Move the `.env.sample` files to `.env` and modify the marqeta's project to have the credentials.
+3. Start Docker.
+4. Run the following script:
     ```bash
     sh scripts/docker-run-all-apps.sh
     ```
-4. Expose the URL (more details [here](DigitalBank/marqeta/README.md)):
+5. Expose the URL (more details [here](DigitalBank/marqeta/README.md)):
     ```bash
     ngrok http 8081
     ```
