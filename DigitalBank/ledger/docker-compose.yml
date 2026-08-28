@@ -2,11 +2,12 @@ services:
   ledger:
     build: .
     container_name: ledger
+    restart: always
     ports:
       - "8087:8087"
     command: node server.mjs
     networks:
-      digitalbank_network:
+      - digitalbank_network
 
 networks:
   digitalbank_network:
