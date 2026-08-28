@@ -39,6 +39,7 @@
         <sonar.scm.provider>git</sonar.scm.provider>
         <sonar.projectName>PRD-DigitalBank-Core</sonar.projectName>
         <sonar.sourceEncoding>${encoding}</sonar.sourceEncoding>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <dependencies>
@@ -309,7 +310,7 @@
                     </execution>
                     <execution>
                         <id>jacoco-report</id>
-                        <phase>prepare-package</phase>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
